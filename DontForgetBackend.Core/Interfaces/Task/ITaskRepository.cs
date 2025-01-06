@@ -12,7 +12,7 @@ namespace DontForgetBackend.Core.Interfaces
     {
         Task<List<TaskModel>> Get();
         Task<int> Create(TaskModel model);
-        Task<int> Update(int id, string? name, string? desc, int? idUser);
+        Task<int> Update(int id, string? name, DateOnly? Date, string? desc, int? idUser);
         Task<int> Delete(int id);
     }
 }

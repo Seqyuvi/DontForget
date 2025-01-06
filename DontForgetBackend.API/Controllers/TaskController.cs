@@ -24,7 +24,7 @@ namespace DontForgetBackend.API.Controllers
         {
             var tasks = await _taskService.GetTask();
 
-            var response = tasks.Select(b => new TaskResponse(b.Id, b.NameTask, b.Description, b.IdUser));
+            var response = tasks.Select(b => new TaskResponse(b.Id, b.NameTask, b.Date, b.Description,  b.IdUser));
 
 
             return Ok(response);
@@ -37,6 +37,7 @@ namespace DontForgetBackend.API.Controllers
             var (task, error) = TaskModel.Create(
                 taskRequest.Id,
                 taskRequest.NameTask,
+                taskRequest.Date,
                 taskRequest.Description,
                 taskRequest.IdUser
                 );
@@ -55,7 +56,7 @@ namespace DontForgetBackend.API.Controllers
         [HttpPut("UpdateTask/{id:int}")]
         public async Task<ActionResult<int>> UpdateTaskr(int id, [FromBody] TaskRequest taskRequest)
         {
-            var taskId = await _taskService.UpdateTask(id, taskRequest.NameTask, taskRequest.Description, taskRequest.IdUser);
+            var taskId = await _taskService.UpdateTask(id, taskRequest.NameTask, taskRequest.Date, taskRequest.Description, taskRequest.IdUser);
             return Ok(taskId);
         }
 

@@ -7,12 +7,12 @@ namespace DontForgetBackend.Core.Model;
 public class TaskModel
 {
 
-    private TaskModel(int id, string? name, string? desc, int? idUser)
+    private TaskModel(int id, string? name, DateOnly? date, string? desc, int? idUser)
     {
         Id = id;
         NameTask = name;
         Description = desc;
-        Date = DateOnly.FromDateTime(DateTime.Now);
+        Date = date;
         IdUser = idUser;
     }
     public int Id { get; set; }
@@ -27,7 +27,7 @@ public class TaskModel
 
     public virtual UserModel? IdUserNavigation { get; set; }
 
-    public static (TaskModel? TaskModel, string Error) Create(int id, string? name, string? desc, int? idUser)
+    public static (TaskModel? TaskModel, string Error) Create(int id, string? name, DateOnly? date, string? desc, int? idUser)
     {
         var error = String.Empty;
 
@@ -36,7 +36,7 @@ public class TaskModel
             error = "Вы не заполнили описание или Имя";
         }
 
-        var task = new TaskModel(id, name, desc, idUser);
+        var task = new TaskModel(id, name, date, desc, idUser);
 
         return (task, error);
     }

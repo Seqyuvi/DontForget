@@ -11,7 +11,7 @@ namespace DontForgetBackend.Core.Interfaces
     {
         Task<List<TaskModel>> GetTask();
         Task<int> CreateTask(TaskModel model);
-        Task<int> UpdateTask(int id, string? name, string? desc, int? idUser);
+        Task<int> UpdateTask(int id, string? name, DateOnly? Date, string? desc, int? idUser);
         Task<int> DeleteTask(int id);
     }
 }

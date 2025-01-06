@@ -31,9 +31,9 @@ namespace DontForgetBackend.Application.Service
             return await _taskRepository.Get();
         }
 
-        public async Task<int> UpdateTask(int id, string? name, string? desc, int? idUser)
+        public async Task<int> UpdateTask(int id, string? name, DateOnly? Date, string? desc, int? idUser)
         {
-            return await _taskRepository.Update(id, name, desc, idUser);
+            return await _taskRepository.Update(id, name, Date, desc, idUser);
         }
     }
 }

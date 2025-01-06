@@ -26,6 +26,7 @@ namespace DontForgetBackend.Infrastructure.Repositories
                 Id = model.Id,
                 Description = model.Description,
                 NameTask = model.NameTask,
+                Date = model.Date,
                 IdUser = model.IdUser
             };
 
@@ -52,20 +53,21 @@ namespace DontForgetBackend.Infrastructure.Repositories
                 .ToListAsync();
 
             var tasks = taskEntities
-                .Select(b => TaskModel.Create(b.Id, b.NameTask, b.Description, b.IdUser).TaskModel)
+                .Select(b => TaskModel.Create(b.Id, b.NameTask, b.Date, b.Description, b.IdUser).TaskModel)
                 .ToList();
 
             return tasks;
         }
 
 
-        public async Task<int> Update(int id, string? name, string? desc, int? idUser)
+        public async Task<int> Update(int id, string? name, DateOnly? Date, string? desc, int? idUser)
         {
             await _db.Tasks
                 .Where(b => b.Id == id)
                 .ExecuteUpdateAsync(s => s
                 .SetProperty(b => b.NameTask, b => name)
                 .SetProperty(b => b.Description, b => desc)
+                .SetProperty(b => b.Date, b=>Date)
                 .SetProperty(b => b.IdUser, b => idUser)
                 );
 
