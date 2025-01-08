@@ -21,7 +21,7 @@ namespace DontForgetBackend.Infrastructure
         }
         public string GenerateToken(UserModel model)
         {
-            Claim[] claims = [new("userId", model.Id.ToString()), new("Login", model.Login,ToString())];
+            Claim[] claims = [new(ClaimTypes.NameIdentifier, model.Id.ToString()), new(ClaimTypes.Name, model.Login,ToString())];
 
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SecretKey)),
