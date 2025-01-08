@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DontForgetBackend.Core.Interfaces;
 using DontForgetBackend.Application.Service;
 using DontForgetBackend.API.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DontForgetBackend.API.Controllers
 {
@@ -22,9 +23,17 @@ namespace DontForgetBackend.API.Controllers
         {
             var token = await _authService.Login(request.Login, request.Password);
 
-            HttpContext.Response.Cookies.Append("Token", token);
+            HttpContext.Response.Cookies.Append("Tk", token);
 
             return Results.Ok(token);
+        }
+
+        [Authorize]
+        [HttpDelete("Exit")]
+        public async Task<IResult> Exit()
+        {
+            HttpContext.Response.Cookies.Delete("Tk");
+            return Results.Ok();
         }
     }
 }

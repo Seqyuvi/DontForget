@@ -24,7 +24,19 @@ namespace DontForgetBackend.API.Controllers
         {
             var tasks = await _taskService.GetTask();
 
-            var response = tasks.Select(b => new TaskResponse(b.Id, b.NameTask, b.Date, b.Description,  b.IdUser));
+            var response = tasks.Select(b => new TaskResponse(b.Id, b.NameTask, b.Date, b.Description, b.IdUser));
+
+
+            return Ok(response);
+        }
+
+        [Authorize]
+        [HttpGet("GetTaskById/{id:int}")]
+        public async Task<ActionResult<List<TaskResponse>>> GetTaskById(int id)
+        {
+            var tasks = await _taskService.GetTaskById(id);
+
+            var response = tasks.Select(b => new TaskResponse(b.Id, b.NameTask, b.Date, b.Description, b.IdUser));
 
 
             return Ok(response);
@@ -66,5 +78,7 @@ namespace DontForgetBackend.API.Controllers
         {
             return Ok(await _taskService.DeleteTask(id));
         }
+
+        
     }
 }

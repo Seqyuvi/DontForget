@@ -60,6 +60,21 @@ namespace DontForgetBackend.Infrastructure.Repositories
         }
 
 
+        public async Task<List<TaskModel>> GetById(int id)
+        {
+            var taskEntities = await _db.Tasks
+                .AsNoTracking()
+                .Where(b => b.IdUser == id)
+                .ToListAsync();
+
+            var tasks = taskEntities
+                .Select(b => TaskModel.Create(b.Id, b.NameTask, b.Date, b.Description, b.IdUser).TaskModel)
+                .ToList();
+
+            return tasks;
+        }
+
+
         public async Task<int> Update(int id, string? name, DateOnly? Date, string? desc, int? idUser)
         {
             await _db.Tasks
