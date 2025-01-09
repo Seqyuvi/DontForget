@@ -1,14 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
+h1{
+  text-align: center;
 }
-.helloPage{
+body {
+  font-family: "Montserrat", sans-serif;
+}
+button {
+  cursor: pointer;
+}
+dialog {
+  width: 400px;
+  margin: 10rem auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 100;
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  flex-direction: column;
+  align-items: flex-end;
+  
+}
+
+.helloPage {
   height: 100vh;
   background-color: #dbdbdb;
   display: flex;
@@ -16,295 +36,316 @@ body {
   align-items: center;
 }
 
-.splashscreen{
+.splashscreen {
   background-color: white;
-  width:78%;
+  width: 78%;
   height: 70vh;
   border-radius: 50px;
   display: flex;
-  
 }
-.left{
+.left {
   justify-content: flex-start;
   right: 0;
-  width:50%;
-  height:70vh;
+  width: 50%;
+  height: 70vh;
   text-align: center;
 }
-.name{
-  font-size: 24;
+.name {
   font-weight: 400;
   margin-top: 25vh;
+  font-size: 20px;
 }
-.slogan{
-  font-size:3rem;
+.slogan {
+  font-size: 4rem;
   font-weight: bold;
 }
-.right{
+.right {
   justify-content: flex-end;
   right: 0;
-  width:50%;
-  height:70vh;
+  width: 50%;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.helloPage img{
-  margin-left:1%;
+.helloPage img {
+  margin-left: 2%;
+  width: 50px;
 }
 
-.imageinslogan{
-  display:flex;
+.imageinslogan {
+  display: flex;
   justify-content: center;
 }
-.splashscreen button{
-  width:246px;
-  height:50px;
-  background-color:#5AD1F1;
+.splashscreen button {
+  width: 30vh;
+  height: 60px;
+  background-color: #5ad1f1;
   border: none;
   border-radius: 15px;
   margin-bottom: 6%;
-  margin-top:4%;
-  font-family: 'Montserrat', sans-serif;
+  margin-top: 4%;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   cursor: pointer;
-} 
-.authPage{
-  width:100%;
-  height:100vh;
-  background-color: #C2D5DA;
-  display:flex;
+}
+.authPage {
+  width: 100%;
+  height: 100vh;
+  background-color: #c2d5da;
+  display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
-.authorisation{
-  display:flex;
+.authorisation {
+  display: flex;
   align-items: center;
   flex-direction: column;
-  width:40%;
-  height:100vh;
+  width: 50%;
+  height: 100vh;
 }
-button {
-  cursor: pointer;
-}
-.auth{
+
+.auth {
   text-align: center;
   margin-top: 15vh;
   font-weight: 450;
-  font-size:50px
+  font-size: 50px;
 }
-.login{
-  width:56%;
-  height:5%;
-  margin-top: 7%;
-  border-radius: 7px;
-  border-color: #5AD1F1;
-  border-style: solid;
-  border-width: 3px;
+
+#loginform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.password{
-  width:56%;
-  height:5%;
-  margin-top: 7%;
-  border-radius: 7px;
-  border-color: #5AD1F1;
-  border-style: solid;
-  border-width: 3px;
+
+.logininput input::placeholder {
+  color: black;
+  font-size: 15px;
 }
-.signIn{
-  width:400px;
+.signIn {
+  width: 400px;
   height: 5vh;
   border-radius: 15px;
   border: none;
-  background-color:#5B63F7;
-  color:white;
+  background-color: #5b63f7;
+  color: white;
   font-size: 30px;
   font-weight: 500;
   margin-top: 15%;
+  cursor: pointer;
 }
-.reg{
-  width:200px;
-  height:3.5vh;
+.reg {
+  width: 200px;
+  height: 3.5vh;
   border-radius: 15px;
   border: none;
-  background-color:#BFBEBE;
-  color:black;
+  background-color: #bfbebe;
+  color: black;
   font-size: 20px;
   font-weight: 520;
   margin-top: 15%;
 }
-.regPage{
-  width:100%;
-  height:100vh;
-  background-color: #C2D5DA;
-  display:flex;
+.regPage {
+  width: 100%;
+  height: 100vh;
+  background-color: #c2d5da;
+  display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
-.registration{
-  display:flex;
+.registration {
+  display: flex;
   align-items: center;
   flex-direction: column;
-  width:40%;
-  height:100vh;
+  width: 40%;
+  height: 100vh;
 }
-.registration input{
-  width:56%;
-  height:5%;
-  margin-top: 7%;
+.registration input {
+  width: 45vh;
+  height: 6%;
+  margin-top: 14%;
   border-radius: 7px;
-  border-color: #5AD1F1;
+  border-color: #5ad1f1;
   border-style: solid;
   border-width: 3px;
 }
-.regPage p{
+.regPage p {
   text-align: center;
   margin-top: 15vh;
   font-weight: 450;
-  font-size:50px
+  font-size: 50px;
 }
-.dontForget{
+.dontForget {
   height: 100vh;
-  font-family: 'Montserrat',sans-serif;
-  display:flex;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
 }
-.menu{
-  background-color: #EFEFEF;
-  width:22%;
-  height: 100%;
-  display:flex;
+.menu {
+  background-color: #efefef;
+  width: 22%;
+  height: 200vh;
+  display: flex;
   flex-direction: column;
 }
-.menu ul{
+.menu ul {
   list-style: none;
-  margin-left:5%;
-  margin-top:12%;
+  margin-left: 5%;
+  margin-top: 12%;
 }
-.menu li img{
-  width:60px;
-  height:55px
+.menu li img {
+  width: 60px;
+  height: 55px;
 }
-.menu ul li{
-  display:flex;
-  margin-top:10%
+.menu ul li {
+  display: flex;
+  margin-top: 10%;
 }
-.menu button{
+.menu button {
   background: none;
-  border:none;
-  font-family: 'Montserrat',sans-serif;
+  border: none;
+  font-family: "Montserrat", sans-serif;
 }
 .profile {
-  width:80%;
+  width: 80%;
   display: flex;
-  margin-top:5%;
-  margin-left:5%
+  margin-top: 5%;
+  margin-left: 5%;
 }
-.logbutton{
-  width:56%;
-  height:5%;
+.logbutton {
+  width: 56%;
+  height: 5%;
   padding: 15px;
   font-size: 25px;
   font-weight: 500;
-
 }
-.menu ul button{
-  font-size:20px;
-  margin-left:10%;
+.menu ul button {
+  font-size: 20px;
+  margin-left: 10%;
   font-weight: 400;
 }
-.notes{
-  width:78%;
-  height:100vh;
-  display:flex;
-  justify-content: center
+.notes {
+  width: 78%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
-.note{
-  width:70%;
-  height:20vh;
-  margin-top:10%;
-  font-family:'Montserrat',sans-serif;
+.note {
+  width: 70%;
+  height: 20vh;
+  margin-top: 10%;
+  font-family: "Montserrat", sans-serif;
 }
-.date{
+.date {
   font-size: 45px;
   font-weight: 500;
 }
-.description{
-  margin-top:1%;
-  height:100%;
-  width:100%;
+.description {
+  margin-top: 1%;
+  height: 100%;
+  width: 100%;
   border-style: solid;
   border-radius: 15px;
   border-width: 1px;
-  display:flex;
-  flex-direction: column
+  display: flex;
+  flex-direction: column;
 }
-.description input{
+.description input {
   font-weight: 450;
-  font-size:20px;
-  height:15%;
-  background: none;
-  margin-top:1%;
-  margin-left:1%;
+  font-size: 20px;
+  height: 15%;
+  margin-top: 1%;
+  margin-left: 1%;
   border-top: none;
   border-left: none;
   border-right: none;
 }
-.description p{
-  margin-left:2%;
+.description p {
+  margin-left: 2%;
 }
-.title{
-  font-size:43px;
+.title {
+  font-size: 43px;
   font-weight: bold;
 }
-.task{
-  font-size:30px;
-  margin-top:1%
+.task {
+  font-size: 30px;
+  margin-top: 1%;
 }
-.description input::placeholder{
+.description input::placeholder {
   font-size: 20px;
-  color:black;
-  
+  color: black;
 }
-.description input:focus{
+.description input:focus {
   outline: none;
 }
-.create{
-  height:100%;
-  width:100%;
-  display:flex;
+.create {
+  height: 100%;
+  width: 100%;
+  display: flex;
   justify-content: flex-end;
-  align-items: flex-end
+  align-items: flex-end;
 }
-.create button{
-  height:37%;
-  margin-right:2%;
+.create button {
+  height: 37%;
+  margin-right: 2%;
   margin-bottom: 1%;
-  border:none;
+  border: none;
   border-radius: 15px;
   font-size: 18px;
-  padding:20px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 400;
 }
-.cancelbutton{
-  width:auto;
-  background-color:#D9D9D9;
+.create input {
+  height: 37%;
+  margin-right: 2%;
+  margin-bottom: 1%;
+  border-radius: 15px;
+  font-size: 18px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
 }
-.addbutton{
-  width:18%;
-  background-color:#F76767;
+.cancelbutton {
+  width: auto;
+  background-color: #d9d9d9;
 }
-.notes ul{
+.addbutton {
+  width: 18%;
+  background-color: #f76767;
+}
+.notes ul {
   list-style: none;
-  width:100%;
+  width: 100%;
 }
-.notes li{
+.notes li {
   width: 100%;
   display: flex;
-  justify-content: center
+  justify-content: center;
+}
+.cancelmodal {
+  height:3.5vh;
+  width:10vh;
+  margin-top:5%;
+  border-radius: 7px;
+  border:none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  background-color:#f76767
+}
+.submit{
+  width: 20%;
+  height: 5vh;
+  margin-top: 20%;
+  border-radius: 7px;
+  background-color: #f76767;
+  border:none;
+  cursor: pointer;
+  font-weight: 650;
 }
