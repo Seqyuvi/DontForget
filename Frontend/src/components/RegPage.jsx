@@ -67,16 +67,18 @@ export default function RegPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input type="submit" value={"Register"} className="signIn"/>
+          <input type="submit" value={"Register"} className="signIn" />
         </form>
-        {/* <Modal open={modal}>
-          <h1></h1>
-          <Link to="/authorisation"><button onClick={() => setModal(false)} className="cancelmodal">Ок</button></Link>
-        </Modal> */}
         {modal ? (
           <Modal>
             <h1>Вы успешно зарегистрировались</h1>
-            <Link to="/authorisation"><button onClick={() => setModal(false)} className="cancelmodal">Ок</button></Link>
+            <div className="ok">
+              <Link to="/authorisation">
+                <button onClick={() => setModal(false)} className="cancelmodal">
+                  Ок
+                </button>
+              </Link>
+            </div>
           </Modal>
         ) : (
           <p></p>

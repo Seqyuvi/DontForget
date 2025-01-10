@@ -3,13 +3,11 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import Modal from "./Modal";
-import { useNavigate } from "react-router-dom";
 
 export default function AuthPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,13 +53,20 @@ export default function AuthPage() {
           {modal ? (
             <Modal>
               <h1>Вы успешно вошли в систему</h1>
-              <Link to="/main">
-                <button onClick={() => setModal(false)} className="cancelmodal">
-                  Ок
-                </button>
-              </Link>
+              <div className="ok">
+                <Link to="/main">
+                  <button
+                    onClick={() => setModal(false)}
+                    className="cancelmodal"
+                  >
+                    Ок
+                  </button>
+                </Link>
+              </div>
             </Modal>
-          ) : <p></p>}
+          ) : (
+            <p></p>
+          )}
         </form>
       </section>
     </main>

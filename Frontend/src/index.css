@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 body {
@@ -24,9 +24,12 @@ dialog {
   display: flex;
   font-family: "Montserrat", sans-serif;
   flex-direction: column;
-  align-items: flex-end;
-  
+  padding: 20px;
 }
+/* dialog input{
+  display: flex;
+  
+} */
 
 .helloPage {
   height: 100vh;
@@ -120,9 +123,37 @@ dialog {
   align-items: center;
 }
 
+.logininput {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+}
+.login {
+  width: 45vh;
+  height: 4.5vh;
+  border-radius: 15px;
+  border-color: #5ad1f1;
+  border-style: solid;
+  border-width: 3px;
+}
+.password {
+  margin-top: 15%;
+  width: 45vh;
+  height: 4.5vh;
+  border-radius: 15px;
+  border-color: #5ad1f1;
+  border-style: solid;
+  border-width: 3px;
+}
+
 .logininput input::placeholder {
   color: black;
-  font-size: 15px;
+  font-size: 20px;
+}
+.logininput input {
+  font-size: 20px;
+  padding-left: 8px;
 }
 .signIn {
   width: 400px;
@@ -306,7 +337,7 @@ dialog {
   margin-bottom: 1%;
   border-radius: 15px;
   font-size: 18px;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -315,6 +346,7 @@ dialog {
 .cancelbutton {
   width: auto;
   background-color: #d9d9d9;
+
 }
 .addbutton {
   width: 18%;
@@ -330,22 +362,72 @@ dialog {
   justify-content: center;
 }
 .cancelmodal {
-  height:3.5vh;
-  width:10vh;
-  margin-top:5%;
+  height: 3.5vh;
+  width: 10vh;
+  margin-top: 5%;
   border-radius: 7px;
-  border:none;
-  font-family: 'Montserrat', sans-serif;
+  border: none;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  background-color:#f76767
+  background-color: #f76767;
 }
-.submit{
+.ok{
+  display:flex;
+  justify-content: flex-end;
+}
+.addtask {
   width: 20%;
   height: 5vh;
   margin-top: 20%;
   border-radius: 7px;
   background-color: #f76767;
-  border:none;
+  border: none;
   cursor: pointer;
   font-weight: 650;
+}
+.modal {
+  height: 100vh;
+}
+.modalbutton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.edit {
+  display: flex;
+  flex-direction: column;
+}
+.editinput{
+  display:flex;
+  flex-direction: column;
+}
+.editinput input{
+  margin-top: 5%;
+  height:3vh;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #5ad1f1;
+  border-radius: 15px;
+  padding: 5px;
+}
+.edit input{
+  font-size: 15px;
+}
+input{
+  cursor: pointer;
+}
+.editbutton{
+  padding:10px;
+  margin-top:10px;
+  width:40%;
+  background-color: #f76767;
+  border:none;
+  border-radius: 15px;
+}
+.modalbutton button{
+  padding:10px;
+  margin-top:15px;
+  width:40%;
+  border:none;
+  border-radius: 15px;
 }

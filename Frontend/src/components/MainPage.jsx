@@ -5,10 +5,8 @@ import today from "../assets/today.svg";
 import future from "../assets/future.svg";
 import filters from "../assets/filters.svg";
 import React, { useEffect, useState } from "react";
-// import CreateNote from "./CreateNote";
 import axios from "axios";
 import Modal from "./Modal";
-import { useNavigate } from "react-router-dom";
 
 export default function MainPage() {
   const [tasks, setTasks] = useState([]);
@@ -16,10 +14,15 @@ export default function MainPage() {
   const [id, setID] = useState("");
   const [modal, setModal] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
-  const [name,setNameTask]=useState('');
-  const [description,setDescription]=useState('');
-  const [date,setDate]=useState('');
-  const navigate = useNavigate();
+  const [taskToEdit, setTaskToEdit] = useState("");
+  const [name, setNameTask] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const [editModal, setEditModal] = useState(false);
+  const [editTask, setEditTask] = useState([]);
+  const [editName, setEditName] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editDate, setEditDate] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
@@ -36,10 +39,13 @@ export default function MainPage() {
     };
     fetchData();
   }, []);
-
   const openModal = (taskId) => {
     setModal(true);
     setTaskToDelete(taskId);
+  };
+  const handleCloseModel = async () => {
+    setModal(false);
+    setEditModal(false);
   };
   const handleDeleteTask = async () => {
     if (taskToDelete) {
@@ -52,22 +58,56 @@ export default function MainPage() {
     setModal(false);
     setTaskToDelete(null);
   };
+  useEffect(() => {
+    const fetchEditTask = async () => {
+      if (taskToEdit) {
+        const response = await axios.get(
+          "http://localhost:5300/api/Task/GetTaskById/" + taskToEdit,
+          { withCredentials: true }
+        );
+        setEditTask(response.data);
+      }
+    };
+    fetchEditTask();
+  }, [taskToEdit]);
+  const modalEditTask = (taskId) => {
+    setEditModal(true);
+    setTaskToEdit(taskId);
+  };
   const handleCreateTask = async (event) => {
     event.preventDefault();
-    const response=await axios.post(
+    const response = await axios.post(
       "http://localhost:5300/api/Task/CreateNewTask",
       {
         nameTask: name,
         date: date,
         description: description,
-        idUser: id
+        idUser: id,
       },
       {
         withCredentials: true,
       }
     );
     if (response.status === 200) {
-      location.reload()
+      location.reload();
+    }
+  };
+  const handleEditTask = async (event) => {
+    event.preventDefault();
+    const response = await axios.put(
+      "http://localhost:5300/api/Task/UpdateTask/" + taskToEdit,
+      {
+        nameTask: editName,
+        date: editDate,
+        description: editDescription,
+        idUser: id,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    if (response.status === 200) {
+      location.reload();
     }
   };
   return (
@@ -76,16 +116,54 @@ export default function MainPage() {
         {modal ? (
           <Modal>
             <h1>Вы точно хотите удалить задачу?</h1>
-            <button className="cancelmodal" onClick={handleDeleteTask}>
-              Да
-            </button>
-            <button
-              style={{ background: "#d9d9d9" }}
-              className="cancelmodal"
-              onClick={() => setModal(false)}
-            >
-              Нет
-            </button>
+            <div className="modalbutton">
+              <button className="cancelmodal" onClick={handleDeleteTask}>
+                Да
+              </button>
+              <button
+                style={{ background: "#d9d9d9" }}
+                className="cancelmodal"
+                onClick={handleCloseModel}
+              >
+                Нет
+              </button>
+            </div>
+          </Modal>
+        ) : (
+          <p></p>
+        )}
+        {editModal ? (
+          <Modal className="modal">
+            <h1>Редактирование заметки</h1>
+            {editTask.map((edit) => (
+              <form key={edit.id} className="edit" onSubmit={handleEditTask}>
+                <div className="editinput">
+                  <input
+                    type="text"
+                    placeholder={edit.nameTask}
+                    onChange={(e) => setEditName(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder={edit.description}
+                    onChange={(e) => setEditDescription(e.target.value)}
+                  />
+                  <input
+                    type="date"
+                    placeholder={edit.date}
+                    onChange={(e) => setEditDate(e.target.value)}
+                  />
+                </div>
+                <div className="modalbutton">
+                  <button onClick={handleCloseModel}>Отмена</button>
+                  <input
+                    className="editbutton"
+                    type="submit"
+                    value={"Редактировать"}
+                  />
+                </div>
+              </form>
+            ))}
           </Modal>
         ) : (
           <p></p>
@@ -134,7 +212,12 @@ export default function MainPage() {
                       >
                         Удалить задачу
                       </button>
-                      <button className="addbutton">Редактировать</button>
+                      <button
+                        onClick={() => modalEditTask(task.id)}
+                        className="addbutton"
+                      >
+                        Редактировать
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -148,14 +231,25 @@ export default function MainPage() {
               <p className="date">Добавить задачу</p>
               <form onSubmit={handleCreateTask}>
                 <div className="description">
-                  <input placeholder="Название задачи" type="text" onChange={(e) => setNameTask(e.target.value)}/>
-                  <input placeholder="Описание" type="text" onChange={(e) => setDescription(e.target.value)}/>
-                  <input type="date" onChange={(e) => setDate(e.target.value)}/>
+                  <input
+                    placeholder="Название задачи"
+                    type="text"
+                    onChange={(e) => setNameTask(e.target.value)}
+                  />
+                  <input
+                    placeholder="Описание"
+                    type="text"
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                  <input
+                    type="date"
+                    onChange={(e) => setDate(e.target.value)}
+                  />
                   <div className="create">
                     <input
                       type="submit"
                       value={"Добавить задачу"}
-                      className="submit"
+                      className="addtask"
                     ></input>
                   </div>
                 </div>
