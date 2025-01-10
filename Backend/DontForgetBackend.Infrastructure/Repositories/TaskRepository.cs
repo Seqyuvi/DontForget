@@ -64,7 +64,7 @@ namespace DontForgetBackend.Infrastructure.Repositories
         {
             var taskEntities = await _db.Tasks
                 .AsNoTracking()
-                .Where(b => b.IdUser == id)
+                .Where(b => b.Id == id)
                 .ToListAsync();
 
             var tasks = taskEntities
