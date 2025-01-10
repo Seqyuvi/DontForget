@@ -66,7 +66,7 @@ namespace DontForgetBackend.API.Controllers
 
         [Authorize]
         [HttpPut("UpdateTask/{id:int}")]
-        public async Task<ActionResult<int>> UpdateTaskr(int id, [FromBody] TaskRequest taskRequest)
+        public async Task<ActionResult<int>> UpdateTaskr(int id, [FromBody] TaskRequest2 taskRequest)
         {
             var taskId = await _taskService.UpdateTask(id, taskRequest.NameTask, taskRequest.Date, taskRequest.Description, taskRequest.IdUser);
             return Ok(taskId);
